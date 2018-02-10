@@ -1,18 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {LOCALE_ID, NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
 
+import localeEs from '@angular/common/locales/es';
+import {registerLocaleData} from '@angular/common';
+import { Capitalizado } from './pipes/capitalizado.pipe';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
+import { ContrasenaPipe } from './pipes/contrasena.pipe';
 
-import { AppComponent } from './app.component';
+registerLocaleData(localeEs);
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Capitalizado,
+    DomseguroPipe,
+    ContrasenaPipe
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
